@@ -1,8 +1,8 @@
-def crearCocienro():
+def crearCocinero():
     null
 def consultarCocinero():
     null
 
-def modificarCocienro():
+def modificarCocinero():
     null
 
