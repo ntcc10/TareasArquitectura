@@ -58,21 +58,73 @@
   button:hover {
     background-color: #0056b3;
   }
+
+  .results {
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  li:hover {
+    background-color: #e9e9e9;
+  }
 </style>
 </head>
 <body>
 
-<form>
+<form id="search-form">
   <div class="form-group">
-    <label for="nombre">Nombre del Cocinero</label>
-    <input type="text" id="nombre" name="nombre">
+    <label for="search">Buscar Cocinero</label>
+    <input type="text" id="search" name="search">
   </div>
-  <div class="form-group">
-    <label for="estacion">Estación de Trabajo</label>
-    <input type="text" id="estacion" name="estacion">
-  </div>
-  <button type="submit">Consultar</button>
+  <button type="submit">Buscar</button>
 </form>
+
+<div class="results" id="results">
+  <ul id="cooks-list">
+    <!-- Aquí se mostrarán los resultados de la búsqueda -->
+  </ul>
+</div>
+
+<script>
+  const form = document.getElementById('search-form');
+  const resultList = document.getElementById('cooks-list');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    // Aquí puedes realizar una petición AJAX para buscar cocineros
+    // Por ahora, simulamos algunos resultados de búsqueda
+    const cooks = [
+      { name: 'Juan Pérez', station: 'Parrilla' },
+      { name: 'María López', station: 'Repostería' },
+      { name: 'Pedro García', station: 'Sushi' },
+      { name: 'Ana Martínez', station: 'Cocina Italiana' }
+    ];
+    displayResults(cooks, searchTerm);
+  });
+
+  function displayResults(cooks, searchTerm) {
+    const filteredCooks = cooks.filter(cook => cook.name.toLowerCase().includes(searchTerm) || cook.station.toLowerCase().includes(searchTerm));
+    resultList.innerHTML = '';
+    filteredCooks.forEach(cook => {
+      const li = document.createElement('li');
+      li.textContent = `${cook.name} - ${cook.station}`;
+      resultList.appendChild(li);
+    });
+  }
+</script>
 
 </body>
 </html>
