@@ -15,3 +15,13 @@ class Cocinero:
         self.name= nom
     def setEstacion(self, est):
         self.estacion = est
+
+
+def registrarCocinero(cocinero):
+    consulta = "INSERT INTO cocineros (nombre, estacion, salario) VALUES (?, ?, ?)"
+    valores = (cocinero.getName(), cocinero.getEstacion(), cocinero.getSalary())
+
+    cursor.execute(consulta, valores)
+
+    conn.commit()
+    conn.close()
