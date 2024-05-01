@@ -1,8 +1,8 @@
 def crearCocinero():
-    null
+    pass
 def consultarCocinero():
-    null
+    pass
 
 def modificarCocinero():
-    null
+    pass
 
