@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consulta de Cocineros</title>
+<title>Lista de Cocineros</title>
 <style>
   body {
     display: flex;
@@ -15,52 +15,13 @@
     font-family: Arial, sans-serif;
   }
 
-  form {
+  .results {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-  }
-
-  .form-group {
-    margin-bottom: 20px;
-  }
-
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  .results {
-    margin-top: 20px;
   }
 
   ul {
@@ -83,48 +44,16 @@
 </head>
 <body>
 
-<form id="search-form">
-  <div class="form-group">
-    <label for="search">Buscar Cocinero</label>
-    <input type="text" id="search" name="search">
-  </div>
-  <button type="submit">Buscar</button>
-</form>
-
 <div class="results" id="results">
+  <h2>Lista de Cocineros</h2>
   <ul id="cooks-list">
-    <!-- Aquí se mostrarán los resultados de la búsqueda -->
+    <!-- Aquí se mostrarán los cocineros -->
+    <li>Juan Pérez - Parrilla</li>
+    <li>María López - Repostería</li>
+    <li>Pedro García - Sushi</li>
+    <li>Ana Martínez - Cocina Italiana</li>
   </ul>
 </div>
-
-<script>
-  const form = document.getElementById('search-form');
-  const resultList = document.getElementById('cooks-list');
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const searchTerm = document.getElementById('search').value.toLowerCase();
-    // Aquí puedes realizar una petición AJAX para buscar cocineros
-    // Por ahora, simulamos algunos resultados de búsqueda
-    const cooks = [
-      { name: 'Juan Pérez', station: 'Parrilla' },
-      { name: 'María López', station: 'Repostería' },
-      { name: 'Pedro García', station: 'Sushi' },
-      { name: 'Ana Martínez', station: 'Cocina Italiana' }
-    ];
-    displayResults(cooks, searchTerm);
-  });
-
-  function displayResults(cooks, searchTerm) {
-    const filteredCooks = cooks.filter(cook => cook.name.toLowerCase().includes(searchTerm) || cook.station.toLowerCase().includes(searchTerm));
-    resultList.innerHTML = '';
-    filteredCooks.forEach(cook => {
-      const li = document.createElement('li');
-      li.textContent = `${cook.name} - ${cook.station}`;
-      resultList.appendChild(li);
-    });
-  }
-</script>
 
 </body>
 </html>
